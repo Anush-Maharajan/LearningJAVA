@@ -28,9 +28,6 @@ public class ForLoop {
             
         }
 
-        do {
-            n--;
-            System.out.println(n);
-        }while(n > 0)
+
     }
 }
