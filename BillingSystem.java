@@ -40,7 +40,7 @@ public class BillingSystem {
         else if(memChoice == "N" || memChoice == "n") {
             print("Ah Okay, Thank you for registering.");
         }
-        
+    scanner.close();
     }
     
     public static void main(String[] args) {
