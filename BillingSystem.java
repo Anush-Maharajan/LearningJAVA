@@ -18,19 +18,21 @@ public class BillingSystem {
         //ask the user if membership is needed
         System.out.println("Would you like to get a membership [Y/N]?");
         String memChoice = scanner.nextLine();
+        // initializing the discount value
+        int discount = 0;
 
         // choices within the membership card
         if(memChoice == "Y" || memChoice == "y") {
-            System.out.println("Which membership would you like? [Gold(1)/Silver(2)]");
+            System.out.printf("Which membership would you like %s ? [Gold(1)/Silver(2)]",name);
             int memType = scanner.nextInt();
             if(memType == 1) {
                 System.out.println("That will be $500, thank you!");
-                int discount = 20;
+                discount = 20;
                 }
 
             else if(memType == 2) {
                 System.out.println("That will be $300, thank you!");
-                int discount = 10;
+                discount = 10;
                 }
 
             else {
@@ -51,6 +53,7 @@ public class BillingSystem {
         if(customerchoice == 1) {
             Register();
         }
+        scanner.close();
     }
      
 }
