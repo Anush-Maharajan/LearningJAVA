@@ -2,19 +2,22 @@ import java.util.Scanner;
 
 public class BillingSystem {
 
-    public static String[] Register() {
+    public static String getName() {
         Scanner scanner = new Scanner(System.in);
         // Ask the name of the person
         System.out.println("What is your name?");
         String name = scanner.nextLine();
 
-        // Ask the D.O.B of the customer
-        System.out.println("What is your DOB?");
-        String DOB = scanner.nextLine();
-        scanner.close();
-        String[] userData = {name, DOB};
+        return name;
+    }
 
-        return userData;
+    public static String getDOB() {
+        Scanner scanner = new Scanner(System.in);
+        // Ask the DOB of the person
+        System.out.println("What is your DOB?");
+        String dob = scanner.nextLine();
+
+        return dob;
     }
 
     public static int MemberShip() {
@@ -26,9 +29,9 @@ public class BillingSystem {
             System.out.println("Would you like to get a membership [Y/N]?\n===>");
             String memChoice = sc.nextLine();
     
-            if(memChoice == "Y" || memChoice == "y") {
+            if(memChoice.equalsIgnoreCase("Y")) {
                 while (true) {
-                    System.out.println("Which membership would you like %s ? [Gold(1)/Silver(2)]");
+                    System.out.println("Which membership would you like? [Gold(1)/Silver(2)]");
                     int memType = sc.nextInt();
 
                     if(memType == 1) {
@@ -58,7 +61,6 @@ public class BillingSystem {
             else {
                 System.out.println("Please enter the correct option!");
             }
-            sc.close();
         }
         
         return discount;
@@ -81,10 +83,11 @@ public class BillingSystem {
             int customerchoice = scanner.nextInt();
 
             if(customerchoice == 1) {
-                String[] nameAndDOB = Register();
+                String name = getName();
+                String dob = getDOB();
                 System.out.println("\n\n\n");
                 int discount = MemberShip();
-                System.out.println(nameAndDOB[0] + " " + nameAndDOB[1] + " " + discount);
+                System.out.println(name + " " + dob + " " + discount);
                 break;
             }
 
