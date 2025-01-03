@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class BillingSystem {
 
     public static String[] Register() {
-        Scanner scanner = new Scanner((Readable) System.out);
+        Scanner scanner = new Scanner(System.in);
         // Ask the name of the person
         System.out.println("What is your name?");
         String name = scanner.nextLine();
@@ -18,58 +18,88 @@ public class BillingSystem {
     }
 
     public static int MemberShip() {
-        Scanner scanner = new Scanner(System.in);
-        //ask the user if membership is needed
-        System.out.println("Would you like to get a membership [Y/N]?");
-        String memChoice = scanner.nextLine();
-
         int discount = 0;
         // choices within the membership card
-        if(memChoice == "Y" || memChoice == "y") {
-            System.out.println("Which membership would you like %s ? [Gold(1)/Silver(2)]");
-            int memType = scanner.nextInt();
-            if(memType == 1) {
-                System.out.println("That will be $500, thank you!");
-                discount = 20;
-                }
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            //ask the user if membership is needed
+            System.out.println("Would you like to get a membership [Y/N]?\n===>");
+            String memChoice = sc.nextLine();
+    
+            if(memChoice == "Y" || memChoice == "y") {
+                while (true) {
+                    System.out.println("Which membership would you like %s ? [Gold(1)/Silver(2)]");
+                    int memType = sc.nextInt();
 
-            else if(memType == 2) {
-                System.out.println("That will be $300, thank you!");
-                discount = 10;
+                    if(memType == 1) {
+                        System.out.println("That will be $500, thank you!");
+                        discount = 20;
+                        break;
+                    }
+
+                    else if(memType == 2) {
+                        System.out.println("That will be $300, thank you!");
+                        discount = 10;
+                        break;
+                    }
+
+                    else {
+                        System.out.println("Please enter the correct option!");
+                    }
                 }
+                break;
+            }
+            
+            else if(memChoice == "N" || memChoice == "n") {
+                System.out.println("Ah Okay, Thank you for registering.");
+                break;
+            }
 
             else {
                 System.out.println("Please enter the correct option!");
-                }
+            }
+            sc.close();
         }
-        else if(memChoice == "N" || memChoice == "n") {
-            System.out.println("Ah Okay, Thank you for registering.");
-        }
-        else {
-            
-        }
-        scanner.close();
-
+        
         return discount;
+    }
+
+    public static void Menu() {
+        System.out.println("S.No\tItem\t\tPrice");
+        System.out.println("1\tApple\t\t$2");
+        System.out.println("2\tBanana\t\t$1");
+        System.out.println("3\tOrange\t\t$3");
+        System.out.println("4\tGrapes\t\t$4");
+        System.out.println("5\tMango\t\t$5");
     }
     
     
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Welcomne to the SOKAMONA Market.\nWhat would you like to do?[register(1)/purchase(2)]\n===>  ");
-        int customerchoice = scanner.nextInt();
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            int customerchoice = scanner.nextInt();
 
-        if(customerchoice == 1) {
-            String[] nameAndDOB = Register();
-            int discount = MemberShip();
-        }
-        else if(customerchoice == 2) {
-            System.out.println("Sure, What would you like to buy?");
+            if(customerchoice == 1) {
+                String[] nameAndDOB = Register();
+                System.out.println("\n\n\n");
+                int discount = MemberShip();
+                System.out.println(nameAndDOB[0] + " " + nameAndDOB[1] + " " + discount);
+                break;
+            }
 
+            else if(customerchoice == 2) {
+                System.out.println("Sure, What would you like to buy?\n\n\n");
+                Menu();
+                break;
+            }
 
+            else {
+                System.out.println("Please enter the correct option!");
+            }
+            scanner.close();
         }
         System.out.println();
-        scanner.close();
     }
      
 }
