@@ -67,12 +67,47 @@ public class BillingSystem {
     }
 
     public static void Menu() {
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("S.No\tItem\t\tPrice");
         System.out.println("1\tApple\t\t$2");
         System.out.println("2\tBanana\t\t$1");
         System.out.println("3\tOrange\t\t$3");
         System.out.println("4\tGrapes\t\t$4");
         System.out.println("5\tMango\t\t$5");
+
+        System.out.println("Enter the item number you would like to purchase: ");
+        String item = sc.nextLine();
+        System.out.println("Enter the quantity: ");
+        int quantity = sc.nextInt();
+
+        if (quantity < 0) {
+            System.out.println("Please enter a valid quantity!");
+        }
+        else {
+            switch (item) {
+                case "1":
+                    System.out.println("You have selected Apple. The total amount is $" + (2 * quantity));
+                    break;
+                case "2":
+                    System.out.println("You have selected Banana. The total amount is $" + (1 * quantity));
+                    break;
+                case "3":
+                    System.out.println("You have selected Orange. The total amount is $" + (3 * quantity));
+                    break;
+                case "4":
+                    System.out.println("You have selected Grapes. The total amount is $" + (4 * quantity));
+                    break;
+                case "5":
+                    System.out.println("You have selected Mango. The total amount is $" + (5 * quantity));
+                    break;
+                default:
+                    System.out.println("Please enter a valid item number!");
+                    break;
+            }
+            
+        }
+        sc.close();
     }
     
     
@@ -99,6 +134,7 @@ public class BillingSystem {
 
             else {
                 System.out.println("Please enter the correct option!");
+                System.out.println("What would you like to do?[register(1)/purchase(2)]\n===>  ");
             }
             scanner.close();
         }
