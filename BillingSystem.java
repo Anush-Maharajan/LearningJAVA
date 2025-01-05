@@ -2,17 +2,16 @@ import java.util.Scanner;
 
 public class BillingSystem {
 
-    public static String getName() {
-        Scanner scanner = new Scanner(System.in);
+    public static String getName(Scanner scanner) {
+        
         // Ask the name of the person
         System.out.println("What is your name?");
         String name = scanner.nextLine();
-
         return name;
     }
 
-    public static String getDOB() {
-        Scanner scanner = new Scanner(System.in);
+    public static String getDOB(Scanner scanner) {
+        
         // Ask the DOB of the person
         System.out.println("What is your DOB?");
         String dob = scanner.nextLine();
@@ -20,11 +19,10 @@ public class BillingSystem {
         return dob;
     }
 
-    public static int MemberShip() {
+    public static int MemberShip(Scanner sc) {
         int discount = 0;
         // choices within the membership card
         while (true) {
-            Scanner sc = new Scanner(System.in);
             //ask the user if membership is needed
             System.out.println("Would you like to get a membership [Y/N]?\n===>");
             String memChoice = sc.nextLine();
@@ -66,9 +64,8 @@ public class BillingSystem {
         return discount;
     }
 
-    public static void Menu() {
-        Scanner sc = new Scanner(System.in);
-
+    public static void Menu(Scanner sc) {
+        // Menu for the items
         System.out.println("S.No\tItem\t\tPrice");
         System.out.println("1\tApple\t\t$2");
         System.out.println("2\tBanana\t\t$1");
@@ -107,28 +104,29 @@ public class BillingSystem {
             }
             
         }
-        sc.close();
     }
     
     
     public static void main(String[] args) {
         System.out.print("Welcomne to the SOKAMONA Market.\nWhat would you like to do?[register(1)/purchase(2)]\n===>  ");
+        Scanner scanner = new Scanner(System.in);
+        
         while (true) {
-            Scanner scanner = new Scanner(System.in);
+            
             int customerchoice = scanner.nextInt();
 
             if(customerchoice == 1) {
-                String name = getName();
-                String dob = getDOB();
+                String name = getName(scanner);
+                String dob = getDOB(scanner);
                 System.out.println("\n\n\n");
-                int discount = MemberShip();
+                int discount = MemberShip(scanner);
                 System.out.println(name + " " + dob + " " + discount);
                 break;
             }
 
             else if(customerchoice == 2) {
                 System.out.println("Sure, What would you like to buy?\n\n\n");
-                Menu();
+                Menu(scanner);
                 break;
             }
 
@@ -138,7 +136,7 @@ public class BillingSystem {
             }
             scanner.close();
         }
-        System.out.println();
+        
     }
      
 }
