@@ -17,7 +17,7 @@ class Encapsulation {
         return password;
     }
 }
-public class MyClass{
+public class EncapsulationClass{
     public static void main(String[] args) {
         Encapsulation obj = new Encapsulation();
         obj.setPassword(12);
