@@ -5,19 +5,12 @@ public class values {
     private int b;
     public int c;
 
-    public void setter(int value) {
-        this.a = value;
+    public void setter(int value1, int value2) {
+        this.a = value1;
+        this.b = value2;
     }
 
-    public int getter() {
-        return a;
-    }
-    
-    public void setterForb(int value) {
-        this.b = value;
-    }
-
-    public int getterForb() {
-        return b;
+    public int[] getter() {
+        return new int[]{a, b};
     }
 }
