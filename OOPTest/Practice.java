@@ -8,3 +8,4 @@ public class Practice {
         System.out.printf("a: %d and b: %d", value[0], value[1]);
     }
 }
+
