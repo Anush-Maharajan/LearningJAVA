@@ -7,8 +7,6 @@ public class Encap {
         parent Buddha = new parent();;
         child Biraj = new child();
         Biraj.askChocolate(5);
-        System.out.println(Nuche.ring);
-        System.out.println(Buddha.car);
 
     }
 }
