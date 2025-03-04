@@ -13,13 +13,8 @@ class Encapsulation {
         return password;
     }
     public boolean checkpassword(String checkingPassword){
-        if (checkingPassword == password){
-            return true;
-        }
-        else{
-            return false;
-        }
-
+        if (checkingPassword == password){return true;}
+        else{return false;}
     }
 }
 
@@ -34,9 +29,6 @@ public class Login {
         cal.setpassword(password);
         
         scanner.close();
-
-     
-    
-}
+    }
     
 }

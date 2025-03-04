@@ -49,7 +49,7 @@ class Login {
     }
 
     public boolean checkpassword(String checkingPassword){
-        if (checkingPassword == password){
+        if (checkingPassword.equals(password)){
             return true;
         }
         return false;
@@ -58,7 +58,7 @@ class Login {
 
 public class CalculatorApp {
 
-    public static void Calculator() {
+    public static void Calculator_System() {
 
         Scanner scanner = new Scanner(System.in);
         SimpleCalculator calc = new SimpleCalculator();
@@ -108,13 +108,14 @@ public class CalculatorApp {
             System.out.println("1. Open Calculator.");
             System.out.println("2. Change Password.");
             System.out.print("/nEnter the number of the option\n--> ");
-            int choice = scanner.next().charAt(0);
+            char choice = scanner.next().charAt(0);
             switch (choice) {
                 case '1':
-                    Calculator();
+                    Calculator_System();
                     break;
                 case '2':
-                    System.out.println("Enter new Password:");
+                    System.out.println("Enter new Password: ");
+                    scanner.nextLine(); //Consume the newline left-over
                     String new_password = scanner.nextLine(); 
                     cal.setpassword(new_password);
                     break;
@@ -125,7 +126,7 @@ public class CalculatorApp {
         }
         
         else {
-            System.out.println("Invalid Passeword: ");
+            System.out.println("Invalid Password!!");
         }
         scanner.close();
     }
