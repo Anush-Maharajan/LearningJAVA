@@ -34,44 +34,35 @@ class SimpleCalculator extends Calculator {
     }
 }
 
-public class CalculatorApp {
-    public static void main(String[] args) {
-
-        Login cal = new Login();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your password");
-        String password = scanner.nextLine();
-        boolean isCorrect = cal.checkpassword(password);
-        if (isCorrect) {
-            System.out.println("Welcome! What do you want to do?");
-            System.out.println("1. Open Calculator.");
-            System.out.println("2. Change Password.");
-            System.out.print("/nEnter the number of the option\n--> ");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    Calculator();
-                    break;
-                case 2:
-
-                    break;
-                default:
-                    System.out.println("Error Occured: invalid option");
-                    break;
-            }
-        }
-        
-        else {
-            System.out.println("Invalid Passeword: ");
-        }
-        scanner.close();
+class Login { 
+    private String password ="2580";
+    Login(){
+        System.out.println("Welcome");
     }
 
-    public static void Calculator() {
-        Scanner scanner = new Scanner(System.in);
+    public void setpassword(String newpassword){
+        this.password=newpassword;
+    }
 
+    public String getpassword(){
+        return password;
+    }
+
+    public boolean checkpassword(String checkingPassword){
+        if (checkingPassword == password){
+            return true;
+        }
+        return false;
+    }
+}
+
+public class CalculatorApp {
+
+    public static void Calculator() {
+
+        Scanner scanner = new Scanner(System.in);
         SimpleCalculator calc = new SimpleCalculator();
-            
+        
         System.out.print("Enter first number: ");
         double num1 = scanner.nextDouble();
         
@@ -84,45 +75,58 @@ public class CalculatorApp {
         double result;
         switch (operator) {
             case '+':
-                result = calc.add(num1, num2);
-                break;
+            result = calc.add(num1, num2);
+            break;
             case '-':
-                result = calc.subtract(num1, num2);
-                break;
+            result = calc.subtract(num1, num2);
+            break;
             case '*':
-                result = calc.multiply(num1, num2);
-                break;
+            result = calc.multiply(num1, num2);
+            break;
             case '/':
-                result = calc.divide(num1, num2);
-                break;
+            result = calc.divide(num1, num2);
+            break;
             default:
-                System.out.println("Invalid operator!");
-                scanner.close();
-                return;
+            System.out.println("Invalid operator!");
+            scanner.close();
+            return;
         }
         
         System.out.println("Result: " + result);
         scanner.close();
     }
-}
 
-class Login { 
-    private String password ="2580";
-    Login(){
-        System.out.println("Welcome");
-    }
-    public void setpassword(String newpassword){
-        this.password=newpassword;
-    }
-    public String getpassword(){
-        return password;
-    }
-    public boolean checkpassword(String checkingPassword){
-        if (checkingPassword == password){
-            return true;
+    public static void main(String[] args) {
+
+        Login cal = new Login();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your password");
+        String password = scanner.nextLine();
+        boolean isCorrect = cal.checkpassword(password);
+        if (isCorrect) {
+            System.out.println("Welcome! What do you want to do?");
+            System.out.println("1. Open Calculator.");
+            System.out.println("2. Change Password.");
+            System.out.print("/nEnter the number of the option\n--> ");
+            int choice = scanner.next().charAt(0);
+            switch (choice) {
+                case '1':
+                    Calculator();
+                    break;
+                case '2':
+                    System.out.println("Enter new Password:");
+                    String new_password = scanner.nextLine(); 
+                    cal.setpassword(new_password);
+                    break;
+                default:
+                    System.out.println("Error Occured: invalid option");
+                    break;
+            }
         }
-        else{
-            return false;
+        
+        else {
+            System.out.println("Invalid Passeword: ");
         }
+        scanner.close();
     }
 }
